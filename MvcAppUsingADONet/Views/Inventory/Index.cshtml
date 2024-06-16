@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MvcAppUsingADONet.Models.Inventory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InventoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReorderLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddedOn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @if (ViewBag.msg != null)
+        {
+            @ViewBag.msg
+        }
+        else 
+        {
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtyInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReorderLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedOn)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.InventoryId  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.InventoryId  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.InventoryId  })
+            </td>
+        </tr>
+}
+}
+    </tbody>
+  </table>
